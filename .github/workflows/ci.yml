@@ -112,6 +112,9 @@ jobs:
       - name: Process coverage info
         run: cmake --build build/coverage -t coverage
 
+      - name: Cat
+        run: cat build/coverage/coverage.info
+
       - name: Submit to codecov.io
         uses: codecov/codecov-action@v2
         with:
