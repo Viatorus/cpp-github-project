@@ -118,6 +118,34 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: build/coverage/coverage.info
 
+  coverage2:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install LCov
+        run: sudo apt-get update -q
+          && sudo apt-get install lcov -q -y
+
+      - name: Configure
+        run: cmake --preset=ci-coverage
+
+      - name: Build
+        run: cmake --build build/coverage -j $(nproc)
+
+      - name: Test
+        working-directory: build/coverage
+        run: ctest --output-on-failure
+
+      - name: Process coverage info
+        run: cmake --build build/coverage -t coverage
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
   memcheck:
     runs-on: ubuntu-latest
 
