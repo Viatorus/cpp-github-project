@@ -145,7 +145,7 @@ jobs:
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: build/coverage/coverage.info
+          path-to-lcov: dumm_coverage.in
 
   memcheck:
     runs-on: ubuntu-latest
