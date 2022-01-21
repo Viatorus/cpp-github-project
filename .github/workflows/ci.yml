@@ -112,9 +112,6 @@ jobs:
       - name: Process coverage info
         run: cmake --build build/coverage -t coverage
 
-      - name: Cat
-        run: cat build/coverage/coverage.info
-
       - name: Submit to codecov.io
         uses: codecov/codecov-action@v2
         with:
@@ -131,24 +128,28 @@ jobs:
         run: sudo apt-get update -q
           && sudo apt-get install lcov -q -y
 
-      - name: Configure
-        run: cmake --preset=ci-coverage
-
-      - name: Build
-        run: cmake --build build/coverage -j $(nproc)
-
-      - name: Test
-        working-directory: build/coverage
-        run: ctest --output-on-failure
+#      - name: Configure
+#        run: cmake --preset=ci-coverage
+#
+#      - name: Build
+#        run: cmake --build build/coverage -j $(nproc)
+#
+#      - name: Test
+#        working-directory: build/coverage
+#        run: ctest --output-on-failure
+#
+#      - name: Process coverage info
+#        run: cmake --build build/coverage -t coverage
 
       - name: Process coverage info
-        run: cmake --build build/coverage -t coverage
+        working-directory: test/source
+        run: python3 file_size_to_coverage.py size_test.cpp file_size_to_coverage.py -o test.info
 
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: dumm_coverage.in
+          path-to-lcov: test/source/test.info
 
   memcheck:
     runs-on: ubuntu-latest
