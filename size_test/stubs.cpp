@@ -1,17 +1,25 @@
 extern "C" {
-#include <stdlib.h>
-#include <sys/unistd.h>
 
-extern void _exit(int code)
+#include <stdlib.h>
+
+void _exit(int /*unused*/)
 {
-  (void)code;
   while (1) {
   }
 }
 
-extern caddr_t _sbrk(int incr)
+int _getpid(void)
 {
-  (void)incr;
+  return 1;
+}
+
+int _kill(int /*unused*/, int /*unused*/)
+{
+  return -1;
+}
+
+caddr_t _sbrk(int /*unused*/)
+{
   return 0;
 }
 }
