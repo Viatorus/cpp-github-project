@@ -5,6 +5,7 @@ include(CTest)
 
 if(BUILD_TESTING)
   add_subdirectory(test)
+  add_subdirectory(size_test)
 endif()
 
 option(BUILD_MCSS_DOCS "Build documentation using Doxygen and m.css" OFF)
