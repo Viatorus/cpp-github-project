@@ -1,13 +1,17 @@
+extern "C" {
 #include <stdlib.h>
 #include <sys/unistd.h>
 
-int _exit(int code)
+extern void _exit(int code)
 {
   (void)code;
+  while (1) {
+  }
 }
 
-caddr_t _sbrk(int incr)
+extern caddr_t _sbrk(int incr)
 {
   (void)incr;
   return 0;
+}
 }

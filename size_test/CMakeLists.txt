@@ -13,7 +13,7 @@ endif()
 
 add_executable(cpprj_size_test_base
         base.cpp
-        stubs.c
+        stubs.cpp
         )
 
 target_link_libraries(cpprj_size_test_base PRIVATE cpprj::cpprj)
@@ -21,7 +21,7 @@ target_compile_features(cpprj_size_test_base PRIVATE cxx_std_20)
 
 add_executable(cpprj_size_test_string
         string.cpp
-        stubs.c
+        stubs.cpp
         )
 
 target_link_libraries(cpprj_size_test_string PRIVATE cpprj::cpprj)
@@ -29,7 +29,7 @@ target_compile_features(cpprj_size_test_string PRIVATE cxx_std_20)
 
 add_executable(cpprj_size_test_to_string
         to_string.cpp
-        stubs.c
+        stubs.cpp
         )
 
 target_link_libraries(cpprj_size_test_to_string PRIVATE cpprj::cpprj)
