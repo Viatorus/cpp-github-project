@@ -6,10 +6,10 @@ include(../cmake/project-is-top-level.cmake)
 include(../cmake/folders.cmake)
 include(../cmake/windows-set-path.cmake)
 
-if(PROJECT_IS_TOP_LEVEL)
+if (PROJECT_IS_TOP_LEVEL)
     find_package(cpprj REQUIRED)
     enable_testing()
-endif()
+endif ()
 
 add_executable(cpprj_size_test_base
         base.cpp

@@ -196,7 +196,7 @@ jobs:
 
       - name: Process coverage info
         working-directory: build/size_test
-        run: python3 ../../scripts/file_size_to_coverage.py -o size_test.info cpprj_size_test_base cpprj_size_test_string cpprj_size_test_to_string
+        run: python3 ../../scripts/file_size_to_coverage.py --size-tool ../../gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-size  -o size_test.info cpprj_size_test_base cpprj_size_test_string cpprj_size_test_to_string
 
       - name: Coveralls
         uses: coverallsapp/github-action@master
