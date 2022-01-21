@@ -11,3 +11,8 @@ inline auto name() -> std::string
 {
   return "cpprj";
 }
+
+inline auto job() -> std::string
+{
+  return "none";
+}
