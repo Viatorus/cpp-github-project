@@ -14,5 +14,5 @@ inline auto name() -> std::string
 
 inline auto job() -> std::string
 {
-  return "none";
+  return "non";
 }
