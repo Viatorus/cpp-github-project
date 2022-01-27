@@ -42,7 +42,6 @@ class Generator:
 
         for uncovered in range(self._base_size, file_size):
             self._out.write(f'DA:{uncovered},0\n')
-
         self._out.write('end_of_record\n')
 
     def _get_size(self, file: Path):

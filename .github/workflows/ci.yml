@@ -189,14 +189,13 @@ jobs:
           curl -L $DOWNLOAD_LINK | tar xj
 
       - name: Configure
-        run: cmake --preset=ci-embedded
+        run: cmake --preset=ci-size-coverage
 
       - name: Build
-        run: cmake --build build/size_test --config Debug -j $(nproc)
+        run: cmake --build build/size_test -j $(nproc)
 
-      - name: Process coverage info
-        working-directory: build/size_test
-        run: python3 ../../scripts/file_size_to_coverage.py --size-tool ../../gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-size  -o size_test.info cpprj_size_test_base cpprj_size_test_string cpprj_size_test_to_string
+      - name: Build
+        run: cmake --build build -t size-coverage
 
       - name: Coveralls
         uses: coverallsapp/github-action@master

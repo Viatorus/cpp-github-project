@@ -1,6 +1,6 @@
-if(PROJECT_IS_TOP_LEVEL)
-  set(CMAKE_INSTALL_INCLUDEDIR include/cpprj CACHE PATH "")
-endif()
+if (PROJECT_IS_TOP_LEVEL)
+    set(CMAKE_INSTALL_INCLUDEDIR include/cpprj CACHE PATH "")
+endif ()
 
 # Project is configured with no languages, so tell GNUInstallDirs the lib dir
 set(CMAKE_INSTALL_LIBDIR lib CACHE PATH "")
@@ -12,50 +12,50 @@ include(GNUInstallDirs)
 set(package cpprj)
 
 install(
-    DIRECTORY include/
-    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
-    COMPONENT cpprj_Development
+        DIRECTORY include/
+        DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
+        COMPONENT cpprj_Development
 )
 
 install(
-    TARGETS cpprj_cpprj
-    EXPORT cpprjTargets
-    INCLUDES DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
+        TARGETS cpprj_cpprj
+        EXPORT cpprjTargets
+        INCLUDES DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
 )
 
 write_basic_package_version_file(
-    "${package}ConfigVersion.cmake"
-    COMPATIBILITY SameMajorVersion
-    ARCH_INDEPENDENT
+        "${package}ConfigVersion.cmake"
+        COMPATIBILITY SameMajorVersion
+        ARCH_INDEPENDENT
 )
 
 # Allow package maintainers to freely override the path for the configs
 set(
-    cpprj_INSTALL_CMAKEDIR "${CMAKE_INSTALL_DATADIR}/${package}"
-    CACHE PATH "CMake package config location relative to the install prefix"
+        cpprj_INSTALL_CMAKEDIR "${CMAKE_INSTALL_DATADIR}/${package}"
+        CACHE PATH "CMake package config location relative to the install prefix"
 )
 mark_as_advanced(cpprj_INSTALL_CMAKEDIR)
 
 install(
-    FILES cmake/install-config.cmake
-    DESTINATION "${cpprj_INSTALL_CMAKEDIR}"
-    RENAME "${package}Config.cmake"
-    COMPONENT cpprj_Development
+        FILES cmake/install-config.cmake
+        DESTINATION "${cpprj_INSTALL_CMAKEDIR}"
+        RENAME "${package}Config.cmake"
+        COMPONENT cpprj_Development
 )
 
 install(
-    FILES "${PROJECT_BINARY_DIR}/${package}ConfigVersion.cmake"
-    DESTINATION "${cpprj_INSTALL_CMAKEDIR}"
-    COMPONENT cpprj_Development
+        FILES "${PROJECT_BINARY_DIR}/${package}ConfigVersion.cmake"
+        DESTINATION "${cpprj_INSTALL_CMAKEDIR}"
+        COMPONENT cpprj_Development
 )
 
 install(
-    EXPORT cpprjTargets
-    NAMESPACE cpprj::
-    DESTINATION "${cpprj_INSTALL_CMAKEDIR}"
-    COMPONENT cpprj_Development
+        EXPORT cpprjTargets
+        NAMESPACE cpprj::
+        DESTINATION "${cpprj_INSTALL_CMAKEDIR}"
+        COMPONENT cpprj_Development
 )
 
-if(PROJECT_IS_TOP_LEVEL)
-  include(CPack)
-endif()
+if (PROJECT_IS_TOP_LEVEL)
+    include(CPack)
+endif ()

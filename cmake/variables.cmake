@@ -4,9 +4,9 @@
 # only relevant for the developer(s) of cpprj
 # Targets necessary to build the project must be provided unconditionally, so
 # consumers can trivially build and package the project
-if(PROJECT_IS_TOP_LEVEL)
-  option(cpprj_DEVELOPER_MODE "Enable developer mode" OFF)
-endif()
+if (PROJECT_IS_TOP_LEVEL)
+    option(cpprj_DEVELOPER_MODE "Enable developer mode" OFF)
+endif ()
 
 # ---- Warning guard ----
 
@@ -15,14 +15,14 @@ endif()
 # This is to provide a user experience similar to find_package when
 # add_subdirectory or FetchContent is used to consume this project
 set(warning_guard "")
-if(NOT PROJECT_IS_TOP_LEVEL)
-  option(
-      cpprj_INCLUDES_WITH_SYSTEM
-      "Use SYSTEM modifier for cpprj's includes, disabling warnings"
-      ON
-  )
-  mark_as_advanced(cpprj_INCLUDES_WITH_SYSTEM)
-  if(cpprj_INCLUDES_WITH_SYSTEM)
-    set(warning_guard SYSTEM)
-  endif()
-endif()
+if (NOT PROJECT_IS_TOP_LEVEL)
+    option(
+            cpprj_INCLUDES_WITH_SYSTEM
+            "Use SYSTEM modifier for cpprj's includes, disabling warnings"
+            ON
+    )
+    mark_as_advanced(cpprj_INCLUDES_WITH_SYSTEM)
+    if (cpprj_INCLUDES_WITH_SYSTEM)
+        set(warning_guard SYSTEM)
+    endif ()
+endif ()
