@@ -201,4 +201,4 @@ jobs:
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: build/size_test/size_test.info
+          path-to-lcov: build/size_test/size-coverage.info
